@@ -4,11 +4,30 @@ $(document).ready(function() {
     const nextQuestion = currQuestion.next(".question-group");
 
     if (nextQuestion.length !== 0) {
-      currQuestion.removeClass("current-question");
-      currQuestion.addClass("hidden");
+      currQuestion.css("position", "absolute");
 
+      currQuestion.animate({
+        "left": "-=100%"
+      }, 1000, function() {
+        currQuestion.removeClass("current-question");
+        currQuestion.addClass("hidden");
+        currQuestion.css("position", "initial");
+        currQuestion.css("left", "");
+      });
+
+      nextQuestion.css("left", "+=100%");
+      nextQuestion.css("position", "absolute");
+      nextQuestion.css("opacity", "0");
       nextQuestion.addClass("current-question");
       nextQuestion.removeClass("hidden");
+
+      nextQuestion.animate({
+        "left": "25%",
+        opacity: "1"
+      }, 1000, function() {
+        nextQuestion.css("right", "");
+        nextQuestion.css("position", "initial");
+      });
 
       if (nextQuestion.next(".question-group").length === 0) {
         $("#next").addClass("hidden");
@@ -53,13 +72,13 @@ $(document).ready(function() {
 
     let answer = "";
     if (learn < 5) {
-      if (color === "grey") {
+      if (color === "Grey") {
         if (airspeed === "11") {
-          answer = "C#";
-        } else if (airspeed === "kind") {
           answer = "Go";
-        } else {
+        } else if (airspeed === "kind") {
           answer = "Python";
+        } else {
+          answer = "C#";
         }
       } else {
         if (sound === "1") {

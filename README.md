@@ -24,6 +24,7 @@ git clone https://github.com/WillRod42/language.git
 * Or download as a zip file
   * Click the green code button on the repository page
   * At the bottom of the popup window select `Download ZIP`
+  * Extract the downloaded .zip folder
 * Open the top level folder
 * Open `index.html` in your browser
 

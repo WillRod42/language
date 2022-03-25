@@ -12,10 +12,6 @@ label {
   font-size: 1.5em;
 }
 
-#response {
-  margin-top: 4em;
-}
-
 h1, h2 {
   text-align: center;
 }
@@ -27,6 +23,10 @@ h1, h2 {
 #questions {
   max-width: 900px;
   margin: auto;
+}
+
+#response {
+  margin-top: 4em;
 }
 
 #next, #submit {
