@@ -90,7 +90,7 @@ $(document).ready(function() {
     $("#prev").addClass("hidden");
     $("#submit").addClass("hidden");
 
-    $("#response h3").text(answer);
+    $("#response h2").text(answer);
   });
 
   $("#submit").click(function() {
