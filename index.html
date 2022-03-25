@@ -11,15 +11,15 @@
   <h1 class="display-3">Which Language Should You Learn?</h1>
   <div id="questions">
     <form>
-      <div class="question-group current-question">
+      <div class="question-group current-question" id="learn">
         <label>On a scale from 1 - 10, how much do you want to learn how to program?</label>
         <input type="number" min="1" max="10" class="form-control">
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="time">
         <label>On a scale from 1 - 10, how much time do you want to commit to learning?</label>
         <input type="number" min="1" max="10" class="form-control">
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="language">
         <label>Which of these sounds most interesting?</label>
         <select class="form-control">
           <option>C#</option>
@@ -28,7 +28,7 @@
           <option>Python</option>
         </select>
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="color">
         <label>Pick a color</label>
         <select class="form-control">
           <option>Red</option>
@@ -37,11 +37,11 @@
           <option>Grey</option>
         </select>
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="number">
         <label>Pick a number between 0 - 1000000000000</label>
         <input type="number" min="1" max="1000000000000" class="form-control">
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="airspeed">
         <label>What is the average airspeed velocity of an unladen swallow?</label>
         <select class="form-control">
           <option value="11">11 m/s</option>
@@ -50,7 +50,7 @@
           <option value="kind">Which kind of swallow: African or European?</option>
         </select>
       </div>
-      <div class="question-group hidden">
+      <div class="question-group hidden" id="sound">
         <label>Which sound do you most prefer?</label>
         <div class="row">
           <div class="col-3"></div>
