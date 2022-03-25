@@ -91,9 +91,23 @@ $(document).ready(function() {
     $("#submit").addClass("hidden");
 
     $("#response h2").text(answer);
+    $("#response").removeClass("hidden");
   });
 
   $("#submit").click(function() {
     $("form").trigger("submit");
+  });
+
+  $("#retake").click(function() {
+    $("#response").addClass("hidden");
+    $("form").removeClass("hidden");
+    $("#next").removeClass("hidden");
+    $("#sound").addClass("hidden");
+    $("#sound").removeClass("current-question");
+    $("#learn").addClass("current-question");
+    $("#learn").removeClass("hidden");
+
+    $("input").val("");
+    $("select").val("");
   });
 });
