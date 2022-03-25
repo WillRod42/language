@@ -42,5 +42,58 @@ $(document).ready(function() {
 
   $("form").submit(function(event) {
     event.preventDefault();
+    
+    const learn = parseInt($("#learn input").val());
+    const time = parseInt($("#time input").val());
+    const language = $("#language select").val();
+    const color = $("#color select").val();
+    const number = parseInt($("#number input").val());
+    const airspeed = $("#airspeed select").val();
+    const sound = $("#sound select").val();
+
+    let answer = "";
+    if (learn < 5) {
+      if (color === "grey") {
+        if (airspeed === "11") {
+          answer = "C#";
+        } else if (airspeed === "kind") {
+          answer = "Go";
+        } else {
+          answer = "Python";
+        }
+      } else {
+        if (sound === "1") {
+          answer = "C#";
+        } else if (sound === "2") {
+          answer = "JavaScript";
+        } else {
+          answer = "Python";
+        }
+      }
+    } else {
+      if (time < 5) {
+        if (number === 72432944391) {
+          answer = "Go";
+        } else if (number < 100000000000 && number > 43000000000) {
+          answer = "C#";
+        } else if (number % 2 === 0) {
+          answer = "Python";
+        } else {
+          answer = "JavaScript";
+        }
+      } else {
+        answer = language;
+      }
+    }
+
+    $(this).addClass("hidden");
+    $("#prev").addClass("hidden");
+    $("#submit").addClass("hidden");
+
+    $("#response h3").text(answer);
+  });
+
+  $("#submit").click(function() {
+    $("form").trigger("submit");
   });
 });
