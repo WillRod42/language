@@ -4,29 +4,11 @@ $(document).ready(function() {
     const nextQuestion = currQuestion.next(".question-group");
 
     if (nextQuestion.length !== 0) {
-      currQuestion.css("position", "absolute");
-
-      currQuestion.animate({
-        "left": "-=100%"
-      }, 1000, function() {
-        currQuestion.removeClass("current-question");
-        currQuestion.addClass("hidden");
-        currQuestion.css("position", "initial");
-        currQuestion.css("left", "");
-      });
-
-      nextQuestion.css("left", "+=100%");
-      nextQuestion.css("position", "absolute");
-      nextQuestion.css("opacity", "0");
-      nextQuestion.addClass("current-question");
-      nextQuestion.removeClass("hidden");
-
-      nextQuestion.animate({
-        "left": "25%",
-        opacity: "1"
-      }, 1000, function() {
-        nextQuestion.css("right", "");
-        nextQuestion.css("position", "initial");
+      currQuestion.slideUp(function() {
+        nextQuestion.slideDown(function() {
+          nextQuestion.addClass("current-question");
+          currQuestion.removeClass("current-question");
+        });
       });
 
       if (nextQuestion.next(".question-group").length === 0) {
@@ -45,10 +27,14 @@ $(document).ready(function() {
 
     if (prevQuestion.length !== 0) {
       currQuestion.removeClass("current-question");
-      currQuestion.addClass("hidden");
-
       prevQuestion.addClass("current-question");
-      prevQuestion.removeClass("hidden");
+
+      currQuestion.slideUp(function() {
+        prevQuestion.slideDown(function() {
+          prevQuestion.addClass("current-question");
+          currQuestion.removeClass("current-question");
+        });
+      });
 
       if (prevQuestion.prev(".question-group").length === 0) {
         $("#prev").addClass("hidden");
@@ -105,28 +91,34 @@ $(document).ready(function() {
       }
     }
 
-    $(this).addClass("hidden");
-    $("#prev").addClass("hidden");
-    $("#submit").addClass("hidden");
-
     $("#response h2").text(answer);
     $("#response").removeClass("hidden");
   });
 
   $("#submit").click(function() {
     $("form").trigger("submit");
+
+    $("#submit").prop("disabled", true);
+    $("#prev").prop("disabled", true);
+
+    $("#sound").slideUp();
+    $("form").slideUp(function() {
+      $("#response").slideDown();
+    });
   });
 
   $("#retake").click(function() {
-    $("#response").addClass("hidden");
-    $("form").removeClass("hidden");
-    $("#next").removeClass("hidden");
-    $("#sound").addClass("hidden");
-    $("#sound").removeClass("current-question");
     $("#learn").addClass("current-question");
-    $("#learn").removeClass("hidden");
+    $("#sound").removeClass("current-question");
+    $("#submit").addClass("hidden");
+    $("#next").removeClass("hidden")
+    $("#prev").addClass("hidden");
+    $("#submit").prop("disabled", false);
+    $("#prev").prop("disabled", false);
 
-    $("input").val("");
-    $("select").val("");
+    $("#response").slideUp(function() {
+      $("form").slideDown();
+      $("#learn").slideDown();
+    });
   });
 });
