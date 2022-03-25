@@ -1,3 +1,34 @@
+body {
+  width: 75%;
+  margin: auto;
+}
+
+form {
+  margin-top: 5em;
+  margin-bottom: 1em;
+}
+
+label {
+  font-size: 1.5em;
+}
+
+#response {
+  margin-top: 4em;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
 .hidden {
   display: none;
+}
+
+#questions {
+  max-width: 900px;
+  margin: auto;
+}
+
+#next, #submit {
+  float: right;
 }
